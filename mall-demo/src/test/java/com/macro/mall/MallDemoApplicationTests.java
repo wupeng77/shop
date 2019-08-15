@@ -21,9 +21,9 @@ public class MallDemoApplicationTests {
 	public void testLogStash() throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
 		PmsProduct product = new PmsProduct();
-		product.setId(1L);
-		product.setName("小米手机");
-		product.setBrandName("小米");
+		product.setId(2L);
+		product.setName("小米手机2");
+		product.setBrandName("小米2");
 		logger.info(mapper.writeValueAsString(product));
 		logger.error(mapper.writeValueAsString(product));
 	}

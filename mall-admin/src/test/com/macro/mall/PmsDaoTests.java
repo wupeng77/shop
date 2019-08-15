@@ -51,4 +51,22 @@ public class PmsDaoTests {
         String json = JSONUtil.parse(productResult).toString();
         LOGGER.info(json);
     }
+
+    @Test
+    public void sendMessage() throws  Exception {
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("47.107.225.70");
+        factory.setPort(5672); //默认端口号
+        factory.setUsername("test");//默认用户名
+        factory.setPassword("test");//默认密码
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+        // 接下来，我们创建一个channel，绝大部分API方法需要通过调用它来完成。
+        // 发送之前，我们必须声明消息要发往哪个队列，然后我们可以向队列发一条消息：
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        String message = "Hello world";
+        channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
+        System.out.println(" [x] Sent '" + message + "'");
+        channel.close();
+    }
 }

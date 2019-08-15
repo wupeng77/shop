@@ -28,4 +28,5 @@ public class HomeContentResult {
     private List<PmsProduct> hotProductList;
     //推荐专题
     private List<CmsSubject> subjectList;
+
 }
